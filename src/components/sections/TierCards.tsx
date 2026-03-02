@@ -1,11 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { tiers } from "./homepage-data";
+import Image from "next/image";
 
 export function TierCards() {
   return (
     <section id="memberships" className="scroll-mt-28">
-      <div className="mb-8 max-w-2xl">
+      <div className="mb-12 max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
           Membership Tiers
         </p>
@@ -13,18 +13,18 @@ export function TierCards() {
           Choose the room that matches your ambition
         </h2>
       </div>
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-3">
         {tiers.map((tier) => (
           <article
             key={tier.slug}
-            className="surface rounded-[1.75rem] p-6 sm:p-8"
+           className="surface rounded-[1.75rem] p-8 sm:p-10"
           >
             <Image
               src={tier.imageSrc}
-              alt={`${tier.name} icon`}
-              width={220}
-              height={220}
-              className="mx-auto mb-4 h-auto w-24 md:w-28"
+              alt={`${tier.name} tier`}
+              width={200}
+              height={200}
+              className="mx-auto mb-6 w-24 h-24 object-contain"
             />
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               {tier.name}
