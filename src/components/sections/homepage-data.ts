@@ -1,6 +1,7 @@
 export type Tier = {
   slug: "gold" | "platinum" | "black";
   name: string;
+  imageSrc: string;
   teaser: string;
   audience: string;
   notFor: string;
@@ -12,6 +13,7 @@ export const tiers: Tier[] = [
   {
     slug: "gold",
     name: "Gold",
+    imageSrc: "/tiers/gold.png",
     teaser:
       "A strong entry point for salespeople who want a sharper process, better habits, and a serious peer environment.",
     audience:
@@ -31,6 +33,7 @@ export const tiers: Tier[] = [
   {
     slug: "platinum",
     name: "Platinum",
+    imageSrc: "/tiers/platinum.png",
     teaser:
       "For committed operators who want deeper coaching, stronger systems, and a more intensive membership experience.",
     audience:
@@ -50,6 +53,7 @@ export const tiers: Tier[] = [
   {
     slug: "black",
     name: "Black",
+    imageSrc: "/tiers/black.png",
     teaser:
       "The highest-access membership tier for top performers pursuing elite-level support, proximity, and strategic depth.",
     audience:

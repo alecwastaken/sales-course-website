@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { tiers } from "./homepage-data";
 
@@ -18,6 +19,13 @@ export function TierCards() {
             key={tier.slug}
             className="surface rounded-[1.75rem] p-6 sm:p-8"
           >
+            <Image
+              src={tier.imageSrc}
+              alt={`${tier.name} icon`}
+              width={220}
+              height={220}
+              className="mx-auto mb-4 h-auto w-24 md:w-28"
+            />
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               {tier.name}
             </p>
