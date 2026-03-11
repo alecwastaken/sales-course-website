@@ -3,32 +3,33 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="surface overflow-hidden rounded-[2rem] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <Image
-          src="/crest.png"
-          alt="Sales University crest"
-          width={560}
-          height={560}
-          priority
-          className="mb-8 h-auto w-[70vw] max-w-[360px] object-contain sm:w-[35vw] sm:max-w-[560px]"
-        />
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
+    <section className="relative flex items-center justify-center px-10 py-12">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <div className="relative mx-auto w-[520px] h-[420px]">
+          <Image
+            src="/crest.png"
+            alt="Sales University crest"
+            fill
+            className="object-cover"
+            priority
+          />
+</div>
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">
           Sales University
         </p>
         <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-zinc-50 sm:text-6xl">
           Welcome to Sales University
         </h1>
-        <p className="mt-6 text-lg text-zinc-300 sm:text-xl">
+        <p className="text-lg text-zinc-300 sm:text-xl">
           Ran by winners for winners
         </p>
-        <p className="mt-2 text-base text-zinc-500 sm:text-lg">
+        <p className="text-base text-zinc-500 sm:text-lg">
           Join the community today
         </p>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/contact"
-            className="rounded-full bg-zinc-50 px-6 py-3 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200"
+            className="rounded-full bg-white px-6 py-3 text-sm font-semibold !text-black hover:bg-zinc-200 transition-colors"rek
           >
             Book a call
           </Link>

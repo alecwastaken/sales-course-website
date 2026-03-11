@@ -1,0 +1,28 @@
+# Phase 3 — Motion Implementation (Subtle Premium)
+
+## Objective
+Implement the motion rules from motion-system.md.
+
+## Implementation Steps (Codex)
+### Step 1: Install Motion Library
+- Install `framer-motion` (if not installed).
+
+### Step 2: Add Reduced Motion Support
+- Create utility in `src/lib/motion.ts`:
+  - helper variants for fadeUp, stagger, and reduced-motion fallback.
+
+### Step 3: Apply Motion to Hero
+- Crest: fade + slight scale.
+- H1 + subtext + CTA: fadeUp with stagger.
+
+### Step 4: Apply Motion to Tier Cards
+- Cards reveal on scroll into view with stagger.
+- Hover: subtle lift.
+
+### Step 5: Tier Detail Highlight (Optional)
+- When user clicks “See more”, scroll to section and briefly apply a soft outline/glow.
+
+## Acceptance Criteria
+- Feels subtle, premium.
+- No jank while scrolling.
+- Reduced-motion users do not see heavy transforms.
