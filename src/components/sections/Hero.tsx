@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/motion/reveal";
 
 export function Hero() {
   return (
     <section className="relative flex items-center justify-center px-10 py-12">
+      <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-        <div className="relative mx-auto w-[520px] h-[420px]">
+        <div className="relative mx-auto w-[600px] h-[500px]">
           <Image
             src="/crest.png"
             alt="Sales University crest"
             fill
-            className="object-cover"
+            className="object-contain"
             priority
           />
 </div>
@@ -29,7 +31,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/contact"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold !text-black hover:bg-zinc-200 transition-colors"rek
+            className="rounded-full bg-white px-6 py-3 text-sm font-semibold !text-black hover:bg-zinc-200 transition-colors"
           >
             Book a call
           </Link>
@@ -41,6 +43,7 @@ export function Hero() {
           </Link>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

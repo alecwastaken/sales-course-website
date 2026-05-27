@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "rm -rf .next tsconfig.tsbuildinfo",
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

@@ -18,11 +18,11 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  distance = 10,
-  duration = 1.1,
-  amount = 0.36,
+  distance = 6,
+  duration = 2.0,
+  amount = 0.6,
   once = true,
-  ease = [0.16, 0.84, 0.3, 1],
+  ease = [0.22, 1, 0.36, 1],
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
 
