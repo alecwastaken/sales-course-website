@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion/reveal";
 export function Hero() {
   return (
     <section className="relative flex items-center justify-center px-10 py-12">
-      <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+      <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center" distance={40} duration={1.6} ease={[0.16, 1, 0.3, 1]} amount={0.1}>
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
         <div className="relative mx-auto w-[600px] h-[500px]">
           <Image

@@ -73,7 +73,7 @@ export function TierDetails() {
           <Reveal
             className="mx-auto flex flex-col items-center text-center"
             delay={index * 0.18}
-            distance={7}
+            
             duration={1.22}
             amount={0.46}
             ease={[0.16, 0.84, 0.3, 1]}

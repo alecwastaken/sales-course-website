@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
 import { tiers } from "./homepage-data";
 
 type TierSlug = "gold" | "platinum" | "black";
@@ -17,6 +18,12 @@ const tierAccent: Record<TierSlug, string> = {
   gold: "#c9a84c",
   platinum: "#b8c0cc",
   black: "#e0e0e0",
+};
+
+const tierGlow: Record<TierSlug, { rest: string; hover: string }> = {
+  gold:     { rest: "drop-shadow(0 0 8px rgba(201,168,76,0.35))",  hover: "drop-shadow(0 0 14px rgba(201,168,76,0.7))"  },
+  platinum: { rest: "drop-shadow(0 0 8px rgba(184,192,204,0.35))", hover: "drop-shadow(0 0 14px rgba(184,192,204,0.7))" },
+  black:    { rest: "drop-shadow(0 0 8px rgba(224,224,224,0.35))", hover: "drop-shadow(0 0 14px rgba(224,224,224,0.7))" },
 };
 
 export function TierCards() {
@@ -120,29 +127,50 @@ export function TierCards() {
                 "max-height 0.7s cubic-bezier(0.77,0,0.18,1), opacity 0.4s ease 0.15s",
             }}
           >
-            <div className="grid grid-cols-[240px_1fr]">
-              <div className="flex flex-col justify-center gap-1 border-r border-white/10 p-10">
-                {TIER_ORDER.map((slug) => {
-                  const tier = tiers.find((t) => t.slug === slug)!;
-                  return (
-                    <div
-                      key={slug}
-                      onClick={() => handleTierClick(slug)}
-                      className="cursor-pointer py-2 text-2xl font-semibold transition-colors duration-200"
-                      style={{
-                        color:
-                          activeTier === slug ? tierAccent[slug] : "#4a4a4a",
-                      }}
-                    >
-                      {tier.name}
-                    </div>
-                  );
-                })}
+            <div className="grid grid-cols-[200px_1fr]">
+              {/* Left: tier selector */}
+              <div className="flex flex-col border-r border-white/5 py-10 pl-10 pr-8">
+                <p className="mb-8 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
+                  Memberships
+                </p>
+                <div className="flex flex-col gap-1">
+                  {TIER_ORDER.map((slug) => {
+                    const tier = tiers.find((t) => t.slug === slug)!;
+                    const isActive = activeTier === slug;
+                    return (
+                      <motion.div
+                        key={slug}
+                        onClick={() => handleTierClick(slug)}
+                        className="flex cursor-pointer items-center gap-4 py-3"
+                        animate={
+                          isActive
+                            ? { color: tierAccent[slug], filter: tierGlow[slug].rest }
+                            : { color: "#404040", filter: "none" }
+                        }
+                        whileHover={{ scale: 1.06, filter: tierGlow[slug].hover }}
+                        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        <span
+                          className="h-4 w-0.5 shrink-0 rounded-full"
+                          style={{
+                            backgroundColor: tierAccent[slug],
+                            opacity: isActive ? 1 : 0,
+                            transition: "opacity 0.3s ease",
+                          }}
+                        />
+                        <span className="text-2xl font-semibold">
+                          {tier.name}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div className="flex flex-col items-center gap-6 p-10">
+              {/* Right: card showcase */}
+              <div className="flex flex-col gap-6 p-10">
                 <div
-                  className="relative w-full max-w-[440px] overflow-hidden rounded-xl"
+                  className="relative w-full overflow-hidden rounded-xl"
                   style={{
                     aspectRatio: "1.586",
                     opacity: fadingCard ? 0 : 1,
@@ -158,16 +186,23 @@ export function TierCards() {
                   />
                 </div>
 
-                <p className="max-w-[440px] text-center text-base leading-7 text-zinc-400">
-                  {activeTierData.teaser}
-                </p>
-
-                <Link
-                  href={`#tier-${activeTier}`}
-                  className="text-sm font-medium text-zinc-500 underline decoration-white/20 underline-offset-4 transition-colors hover:text-zinc-200"
-                >
-                  See details
-                </Link>
+                <div className="space-y-3">
+                  <p
+                    className="text-[10px] font-semibold uppercase tracking-[0.22em]"
+                    style={{ color: tierAccent[activeTier] }}
+                  >
+                    {activeTierData.name} Membership
+                  </p>
+                  <p className="text-sm leading-7 text-zinc-400">
+                    {activeTierData.teaser}
+                  </p>
+                  <Link
+                    href={`#tier-${activeTier}`}
+                    className="inline-block text-sm font-medium text-zinc-500 underline decoration-white/15 underline-offset-4 transition-colors hover:text-zinc-200"
+                  >
+                    See details →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

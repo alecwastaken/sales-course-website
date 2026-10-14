@@ -18,11 +18,11 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  distance = 6,
-  duration = 2.0,
-  amount = 0.6,
+  distance = 20,
+  duration = 0.9,
+  amount = 0.2,
   once = true,
-  ease = [0.22, 1, 0.36, 1],
+  ease = [0.16, 1, 0.3, 1],
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
 
@@ -35,7 +35,7 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount }}
+      viewport={{ once, amount, margin: "-80px" }}
       transition={{ duration, ease, delay }}
     >
       {children}
